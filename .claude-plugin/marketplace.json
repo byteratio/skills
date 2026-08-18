@@ -1,0 +1,19 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "byteratio-skills",
+  "owner": {
+    "name": "Byteratio",
+    "url": "https://github.com/byteratio"
+  },
+  "description": "Byteratio's internal marketplace of Claude Code skill plugins.",
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "example-skill",
+      "source": "./example-skill",
+      "description": "Template plugin — copy this to scaffold a new skill for the marketplace."
+    }
+  ]
+}
