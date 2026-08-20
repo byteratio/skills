@@ -1,0 +1,21 @@
+#!/usr/bin/ruby
+SKIP_PATTERNS = %w[.env secrets credentials tasks.md temp/ notes.txt scratch .claude/ node_modules/ .next/ dist/ build/ .cache/ coverage/]
+
+BUCKETS = {
+  "skip"   => ->(path) { SKIP_PATTERNS.any? { |pat| path.include?(pat) } },
+  "test"   => ->(path) { path.include?("__tests__/") || path.include?("/test/") || path.include?(".test.") || path.include?(".spec.") },
+  "config" => ->(path) { path.start_with?("tsconfig", "package.json", "package-lock", "yarn.lock", "pnpm-lock", ".eslint", ".prettier", "vite.config", "webpack.config", "jest.config", "vitest.config", "next.config", ".babel", "babel.config", "Procfile", "Dockerfile", "docker-compose", ".github/") },
+  "docs"   => ->(path) { path.start_with?("docs/", "README", "CHANGELOG") || path.end_with?(".md") },
+  "types"  => ->(path) { path.end_with?(".d.ts") || path.include?("/types/") },
+  "app"    => ->(path) { path.start_with?("src/", "app/", "pages/", "components/", "lib/", "utils/", "hooks/", "api/") },
+  "other"  => ->(_)    { true }
+}
+
+paths = `git status --porcelain`.lines(chomp: true).map { |l| l[3..] }
+grouped = BUCKETS.keys.to_h { |b| [b, []] }
+paths.each { |path| grouped[BUCKETS.find { |_, matcher| matcher.call(path) }.first] << path }
+
+BUCKETS.each_key do |bucket|
+  files = grouped[bucket]
+  puts "[#{bucket}] #{files.empty? ? "(none)" : files.join(", ")}"
+end

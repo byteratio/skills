@@ -1,0 +1,9 @@
+{
+  "name": "example-skill",
+  "displayName": "Example Skill",
+  "version": "0.1.0",
+  "description": "Template plugin demonstrating the layout for a new skill in this marketplace.",
+  "author": {
+    "name": "Byteratio"
+  }
+}
