@@ -1,0 +1,10 @@
+{
+  "name": "hechtch-skills",
+  "displayName": "hechtch's Skills",
+  "version": "0.1.0",
+  "description": "Personal working conventions contributed by @hechtch — kanban plan tracking, dependency-exposure sweeps, persona-based UX agents, and native iPhone development. Opinionated rather than org-blessed; install the bundle and use the skills that fit.",
+  "author": {
+    "name": "Christopher J Hecht",
+    "url": "https://github.com/hechtch"
+  }
+}

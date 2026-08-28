@@ -14,6 +14,11 @@
       "name": "example-skill",
       "source": "./example-skill",
       "description": "Template plugin — copy this to scaffold a new skill for the marketplace."
+    },
+    {
+      "name": "hechtch-skills",
+      "source": "./hechtch-skills",
+      "description": "Personal conventions from @hechtch: kanban plan tracking, dependency-exposure sweeps, persona UX agents, and native iPhone development."
     }
   ]
 }
